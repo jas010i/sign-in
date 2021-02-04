@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+
+<html>
+
+<title>Login and Registration Form</title>
+
+<head>
+
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap" rel="stylesheet">
+
+<meta charset="utf-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script>
+
+
+    function login() {
+
+        /*
+            The local variables declared here within the function serve
+                to gather information that the user inputs on to the 'sign-in'
+                page. The 'vars' declared are the required inputs needed for this
+                specific assignment. While the form does ask for more information
+                it is not immediatley needed. Should we need it later we can simply
+                delete the comment markers, and they will be readily available.
+        */
+
+        var firstName = document.getElementById("fname").value;
+
+        var lastName = document.getElementById("lname").value;
+
+        /*
+            These variables have been commented out, because they are not yet needed.
+                Should they be needed we can simply un-comment them.
+
+        -------------------------------------------------------------
+        var streetAddress = document.getElementById("address").value;
+
+        var city = document.getElementById("city").value;
+
+        var state = document.getElementById("state").value;
+
+        var zipCode = document.getElementById("zipcode").value;
+        -------------------------------------------------------------
+
+        */
+
+                if(firstName == "")
+                    {
+                        alert("Please enter your first name");
+                        document.getElementById("fname").style.border = "2px solid red";
+                    }
+                    else if(firstName != "")
+                        {
+                            document.getElementById("fname").style.border = "none";
+                            document.getElementById("fname").style.borderBottom = "1px solid green";
+                        }
+
+                if(lastName == "")
+                {
+                    alert("Please enter your last name");
+                    document.getElementById("lname").style.border = "2px solid red";
+                }
+                    else if(lastName != "")
+                        {
+                            document.getElementById("lname").style.border = "none";
+                            document.getElementById("lname").style.borderBottom = "1px solid green";
+                        }
+                                   
+                }
+            
+    /*
+        This boolean function serves to validate the inputed email. It will run the submitted information
+            against certain criteria. If the criteria is met it will 'return true;', if it is not
+            met it will 'return false;' resulting in an alert to inform the user to input the correct information
+            in the requested format.
+    */
+
+
+    function validateEmail() {
+
+            /* This regex is what the submitted information is ran against */
+
+                if(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)$/igm.test(email.value))
+                {
+                    document.getElementById("email").style.border = "none";
+                    document.getElementById("email").style.borderBottom = "1px solid green";
+                    return (true);
+                }
+                    alert("Please enter a valid email address");
+                    document.getElementById("email").style.border = "2px solid red";
+                    return (false);
+                }
+                
+
+    /*
+        This boolean function serves to validate the inputed phone number. It will run the submitted information
+            against certain criteria. If the criteria is met it will 'return true;', if it is not
+            met it will 'return false;' resulting in an alert to inform the user to input the correct information
+            in the requested format.
+    */
+
+    function validatePhone() {
+
+            /* This regex is what the submitted information is ran against */
+
+                if(/^(\()?\d{3}(\))?(-|\s)?\d{3}(-|\s)\d{4}$/.test(phone.value))
+                {
+                    document.getElementById("phone").style.border = "none";
+                    document.getElementById("phone").style.borderBottom = "1px solid green";
+                    return(true);
+                }
+                    alert("Please enter a valid phone number");
+                    document.getElementById("phone").style.border = "2px solid red";
+                    return (false);
+                }
+
+    /*
+        This boolean function serves to validate the inputed username. It will run the submitted information
+            against certain criteria. If the criteria is met it will 'return true;', if it is not
+            met it will 'return false;' resulting in an alert to inform the user to input the correct information
+            in the requested format.
+    */
+
+    function validateUser() {
+                
+                if(/^[a-z0-9_-]{4,20}$/igm.test(username.value))
+                {
+                    document.getElementById("username").style.border = "none";
+                    document.getElementById("username").style.borderBottom = "1px solid green";
+                    return true;
+                }
+                    alert("Please enter a valid User Name");
+                    document.getElementById("username").style.border = "2px solid red";
+                    return false;
+                }
+
+    /*
+        This boolean function serves to validate the inputed password. It will run the submitted information
+            against certain criteria. If the criteria is met it will 'return true;', if it is not
+            met it will 'return false;' resulting in an alert to inform the user to input the correct information
+            in the requested format.
+    */
+
+    function validatePassword() {
+
+                if(/^[a-z0-9A-Z_-]{4,11}[!@$*]{1}$/.test(password.value))
+                {
+                    document.getElementById("password").style.border = "none";
+                    document.getElementById("password").style.borderBottom = "1px solid green";
+                    return true;
+                }
+                    alert("Please enter a valid Password");
+                    document.getElementById("password").style.border = "2px solid red";
+                    return false;
+            }
+
+            
+    
+
+</script>
+
+</head>
+
+<body>
+
+    <style>
+
+
+        body {margin:0; background-image: url("background.jpg"); background-repeat: no-repeat; background-attachment: fixed; backdrop-filter: brightness(.4) hue-rotate(180deg); background-size: cover;}
+
+        div.landing-message  {margin: 0; padding-top: 1%; width: 60%; position: relative; left: 20%; font-family: 'Open Sans Condensed', sans-serif; font-weight: 300;
+                                color: white; font-size: 1.7vw;}
+
+
+        div.login {margin: 0; padding-top: 2%;}
+            div.login > p, label, input, button{width: 60%; position: relative; left: 20%; font-family: 'Open Sans Condensed', sans-serif; font-weight: 300;
+                                                color: white; font-size: 1.7vw;}
+            div.login > input {background-color: rgba(0, 0, 0, 0); border:rgba(0, 0, 0, 0); border-bottom: 1px solid white; transition: .6s ease-in-out;}
+            div.login > input:focus {transform: scale(1.1); margin-top: 2%; margin-bottom: 2%; border-bottom: 1px solid white;}
+            div.login > button {background-color: rgba(0, 0, 0, 0); border:rgba(0, 0, 0, 0); transition: .4s ease-in-out; margin-bottom: 15%;}
+            div.login > button:hover {background-color: rgba(0, 0, 0, 0.541); border:rgba(0, 0, 0, 0); cursor: pointer;}
+
+
+        ::placeholder {color: rgba(255, 255, 255, 0.555);}
+
+        ::-webkit-scrollbar {width: 7px;}
+        ::-webkit-scrollbar-track {background: rgb(0, 0, 0);}
+        ::-webkit-scrollbar-thumb {background: rgb(80, 66, 80);}
+        
+            
+
+
+    </style>
+
+
+<div class="landing-message">
+
+    <p style="text-align: center;">
+        Programming-Lab-6 (Form B) | Jason Solis | 10/10/2020
+    </p>
+
+    <h1>
+        Welcome to  <i style="font-family: Verdana, Geneva, Tahoma, sans-serif; font-weight: lighter;">Oasis</i>
+    </h1>
+        <h2>
+            Your Home away from Home
+        </h2>
+            <h3 style="padding-top: 0;">
+                Where your raging seas meet calmer waters
+            </h3>
+                <h4>
+                    To get started simply fill out the<br>information below
+                </h4>
+
+</div>
+
+
+
+<div class="login">
+
+        <p>Fields marked " * " are required</p>
+
+        <label for="fname">Enter Your First Name:*</label><br>
+                <input id="fname" type="text" placeholder="First Name" autocomplete="off"><br>
+
+        <label for="lname">Enter Your Last Name:*</label><br>
+                <input id="lname" type="text" placeholder="Last Name" autocomplete="off"><br>
+
+        <label for="address">Enter Your Current Address:</label><br>
+                <input id="address" type="text" placeholder="123 Example Ln" autocomplete="off"><br>
+
+        <label for="city">Current City:</label><br>
+                <input id="city" type="text" placeholder="City" autocomplete="off"><br>
+
+        <label for="state">State:</label><br>
+                <input id="state" type="text" placeholder="State" autocomplete="off" maxlength="2" autocapitalize="characters"><br>
+
+        <label for="zipcode">Zip Code:</label><br>
+                <input id="zipcode" type="text" placeholder="Zip Code" autocomplete="off" maxlength="5"><br> 
+
+        <label for="email">Enter your email:*</label><br>
+                <input id="email" type="email" placeholder="example@email.com" autocomplete="off"><br>
+
+        <label for="phone">Enter your phone number in format (XXX)XXX-XXXX:*</label><br>
+                <input id="phone" type="tel" placeholder="(XXX)XXX-XXXX" autocomplete="off"><br>
+
+                <p style="text-align: center; font-size: 3vw; margin: 0; padding: 0;">.</p>
+                <p style="text-align: center; font-size: 3vw; margin: 0; padding: 0;">.</p>
+                <p style="text-align: center; font-size: 3vw; margin: 0; padding: 0;">.</p>
+            
+
+        <label for="username">Create a Username:<br>
+            <i style="font-size: 1.2vw;">(Username should be 4-20 characters.)</i>
+        </label><br>
+                <input id="username" type="text" placeholder="Username" autocomplete="off"><br>
+        <label for="password">Create a password:<br>
+            <i style="font-size: 1.2vw;">(Password should be 4-12 characters long AND include at least one of the following 
+                <strong style="font-weight: bold;"> !@$* </strong>.)</i>
+        </label><br>
+                <input id="password" type="password" placeholder="Password" autocomplete="off">
+                <br>
+                    <br>
+        <button onclick="login(); validateEmail(); validatePhone(); validateUser(); validatePassword();">Register</button>
+
+
+
+</div>
+
+
+
+
+
+
+
+    <footer>
+
+    </footer>
+
+
+</body>
+
+</html>
